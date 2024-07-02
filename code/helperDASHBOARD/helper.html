@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="helperstyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIYq5GzGz8bgFwSC9m3iGJs2lrfcfey1A&callback=initMap" async defer></script>
+    <script>
+        function initMap() {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+    
+                    const myLatLng = { lat: latitude, lng: longitude };
+                    const map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 15,
+                        center: myLatLng
+                    });
+    
+                    new google.maps.Marker({
+                        position: myLatLng,
+                        map: map,
+                        title: "You are here!"
+                    });
+                });
+            } else {
+                console.log("Geolocation is not supported by this browser.");
+            }
+        }
+    </script>
+    <style>
+        #map {
+            height: 410px;
+            width: 100%;
+            z-index: 1;
+            margin-top: 60px;
+            margin-left:5px; 
+            border: 5px solid #e09300;
+            border-radius: 10px;
+    
+        }
+        /* span{
+            font-size: 25px;
+           
+        } */
+    </style>
+</head>
+<body>
+
+    <header>
+            
+        <div class="logopanel">
+            <div class="logo">
+                <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+  <dotlottie-player src="https://lottie.host/cd3ae225-10fb-404b-b249-2620b55c8dcc/YEvyZHhZRh.json" background="transparent" speed="1" style="width: 150px; height: 150px" direction="1" playMode="normal" loop autoplay></dotlottie-player>
+            </div>
+            <div class="name">
+                <p class="hh">Helping Hands</p>
+            </div>
+            <div class="tags">
+                <a href="">Features</a>
+            </div>
+            <div class="wu">
+                <a href="">WhyUs?</a>
+            </div>
+            <div class="about">
+                <a href="">About</a>
+            </div>
+            <!-- <div class="login">
+                <a href="http://localhost/ridehack/loginpage.php">Login</a>
+            </div> -->
+
+        </div>
+    </header>
+
+     <div class="maindiv">
+     <div id="map"></div>
+     <div class="dashboard">
+        <h1 class="dashboard-heading">Helper Dashboard</h1>
+        
+        <div class="alert">
+          <p class="alert-message">Alert 1: Bring cinema ticket</p>
+          <div class="alert-options">
+            <button class="accept-btn">Accept</button>
+            <button class="reject-btn">Reject</button>
+          </div>
+        </div>
+        <div class="alert">
+          <p class="alert-message">Alert 2: Buy groceries</p>
+          <div class="alert-options">
+            <button class="accept-btn">Accept</button>
+            <button class="reject-btn">Reject</button>
+          </div>
+        </div>
+        <div class="alert">
+          <p class="alert-message">Alert 3: Walk the dog</p>
+          <div class="alert-options">
+            <button class="accept-btn">Accept</button>
+            <button class="reject-btn">Reject</button>
+          </div>
+        </div>
+      </div>
+      </div>
+    
+
+
+
+
+</body>
+</html>

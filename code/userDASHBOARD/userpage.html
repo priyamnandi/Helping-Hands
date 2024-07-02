@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Page</title>
+    <link rel="stylesheet" href="userpagestyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIYq5GzGz8bgFwSC9m3iGJs2lrfcfey1A&callback=initMap" async defer></script>
+<script>
+    function initMap() {
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+
+                const myLatLng = { lat: latitude, lng: longitude };
+                const map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 15,
+                    center: myLatLng
+                });
+
+                new google.maps.Marker({
+                    position: myLatLng,
+                    map: map,
+                    title: "You are here!"
+                });
+            });
+        } else {
+            console.log("Geolocation is not supported by this browser.");
+        }
+    }
+</script>
+<style>
+    #map {
+        height: 200px;
+        width: 300px;
+        z-index: 1;
+        /* margin-top: px; */
+        margin-left: 450px;
+        border: 5px solid #e09300;
+        border-radius: 10px;
+
+    }
+    span{
+        font-size: 25px;
+       
+    }
+</style>
+</head>
+<body>
+  
+    <header>
+        <div class="logopanel">
+            <div class="logo">
+                <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+  <dotlottie-player src="https://lottie.host/cd3ae225-10fb-404b-b249-2620b55c8dcc/YEvyZHhZRh.json" background="transparent" speed="1" style="width: 150px; height: 150px" direction="1" playMode="normal" loop autoplay></dotlottie-player>
+            </div>
+            <div class="name">
+                <p class="hh">Helping Hands</p>
+            </div>
+            <div class="tags">
+                <a href="navbar.html">Features</a>
+            </div>
+            <div class="wu">
+                <a href="navbar.html">WhyUs?</a>
+            </div>
+            <div class="about">
+                <a href="navbar.html">About</a>
+            </div>
+            <div class="login">
+              <a href="http://localhost/ridehack/loginpage.php">Login</a>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="form-container">
+        <h1>Request a Queue Master <br><span> Your Location : </span></h1>
+
+        <div id="map"></div>
+        <form id="request-form" action="#" method="post">
+          <div class="form-group">
+            <label for="task-type" class="label-large">Type of Task:</label><br>
+            <div class="radio-group">
+              <div class="checkbox-item">
+                <input type="radio" id="delivery" name="task-type" value="delivery">
+                <label for="delivery" class="label-medium">Delivery</label>
+              </div>
+              <div class="radio-item">
+                <input type="radio" id="queue" name="task-type" value="queue">
+                <label for="queue" class="label-medium">Queue</label>
+              </div>
+              <div class="radio-item">
+                <input type="radio" id="personal-help" name="task-type" value="personal-help">
+                <label for="personal-help" class="label-medium">Personal Help</label>
+              </div>
+              <div class="radio-item">
+                <input type="radio" id="other" name="task-type" value="other">
+                <label for="other" class="label-medium">Other</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="task-description" class="label-large">Describe Your Task</label><br>
+            <textarea id="task-description" name="task-description" rows="4" maxlength="200" class="input-large" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="price" class="label-large">Your Price:</label><br>
+            <input type="number" id="price" name="price" class="input-large" required>
+          </div>
+          <div class="center-btn">
+            <button type="submit" class="request-btn">Request Helper</button>
+          </div>
+        </form>
+      </div>
+    
+
+      
+    
+  
+    
+</body>
+</html>
